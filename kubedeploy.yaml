@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meenaxi_medicure_deploy
+  labels:
+    app: meenaxi_medicure_deploy_lbl
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: meenaxi_medicure_app
+  template:
+    metadata:
+      labels:
+        app: meenaxi_medicure_app
+    spec:
+      containers:
+      - name: meenaxi_medicure_container
+        image: meenaxim/medicure
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: meenaxi_medicure_np-service
+  labels:
+    app: meenaxi_medicure_app
+spec:
+  selector:
+    app: meenaxi_medicure_deploy_lbl
+
+  type: NodePort
+  ports:
+  - nodePort: 31020
+    port: 8080
+    targetPort: 8080
