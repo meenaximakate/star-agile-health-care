@@ -28,7 +28,7 @@ metadata:
     app: meenaxi-medicure-app
 spec:
   selector:
-    app: meenaxi-medicure-deploy-lbl
+    app: meenaxi-medicure-app
 
   type: NodePort
   ports:
