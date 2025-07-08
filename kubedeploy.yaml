@@ -23,14 +23,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: meenaxi-medicure-np-service
+  name: meenaxi-medicure-lb-service
   labels:
     app: meenaxi-medicure-app
 spec:
   selector:
     app: meenaxi-medicure-app
 
-  type: NodePort
+  type: LoadBalancer
   ports:
   - nodePort: 31020
     port: 8080
